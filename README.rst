@@ -1,5 +1,5 @@
 ==============================================================
-EDUxQSD: Education modules for quantitative sustainable design
+EDUxQSD: EDUcation modules for Quantitative Sustainable Design
 ==============================================================
 
 
