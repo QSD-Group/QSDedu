@@ -19,7 +19,7 @@ Of couse, you can also submit a `GitHub issue <https://github.com/yalinli2/EDUxQ
 
 
 **Sub-modules:**
-	- S1: Setting up Python environment
-	- S2: Version control and collaboration
-	- S3: Documentation and testing
-	- S4: Packaging and publishing
+	- S1: Getting Started on Python
+	- S2: Version Control and Collaboration
+	- S3: Documentation and Testing
+	- S4: Packaging and Publishing
