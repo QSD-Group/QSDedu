@@ -23,3 +23,4 @@ Of couse, you can also submit a `GitHub issue <https://github.com/yalinli2/EDUxQ
 	- S2: Version Control and Collaboration
 	- S3: Documentation and Testing
 	- S4: Packaging and Publishing
+	- S5: Other Topics
