@@ -1,6 +1,6 @@
-==============================================================
-EDUxQSD: EDUcation modules for Quantitative Sustainable Design
-==============================================================
+=============================================================
+QSDedu: EDUcation modules for Quantitative Sustainable Design
+=============================================================
 
 
 Status
@@ -10,16 +10,16 @@ Status
 This repository is under continuous development, please refer to the individual README files within each module for its status.
 
 
-What is EDUxQSD?
-----------------
-EDUxQSD contains course modules for quantitative sustainable design (QSD), including the introduction of QSD methodology [1]_ and separate modules on using the packages developed by the `Quantitative Sustainable Design Group <https://github.com/QSD-Group>`_ for QSD of different engineered systems.
+What is QSDedu?
+---------------
+QSDedu contains course modules for quantitative sustainable design (QSD), including the introduction of QSD methodology [1]_ and separate modules on using the packages developed by the `Quantitative Sustainable Design Group <https://github.com/QSD-Group>`_ for QSD of different engineered systems.
 
 
 Authors and Contributing
 ------------------------
-Development of EDUxQSD is led by Yalin Li (`@yalinli2 <https://github.com/yalinli2>`_; `email <zoe.yalin.li@gmail.com>`_) with contributions from the `Quantitative Sustainable Design Group <https://github.com/QSD-Group>`_.
+Development of QSDedu is led by Yalin Li (`@yalinli2 <https://github.com/yalinli2>`_; `email <zoe.yalin.li@gmail.com>`_) and Joy Zhang (`@joyxyz1994 <https://github.com/joyxyz1994>`_; `email <joycheung1994@gmail.com>`_) with contributions from the `Quantitative Sustainable Design Group <https://github.com/QSD-Group>`_.
 
-We welcome contributions from the community! Please feel free to submit a `GitHub issue <https://github.com/yalinli2/EDUxQSD/issues>`_ for your questions and suggestions.
+We welcome contributions from the community! Please feel free to submit a GitHub issue for your questions and suggestions.
 
 
 License information

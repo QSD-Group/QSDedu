@@ -1,6 +1,6 @@
-================================================================================
-The EDUxQSD project is under the University of Illinois/NCSA Open Source License
-================================================================================
+===============================================================================
+The QSDedu project is under the University of Illinois/NCSA Open Source License
+===============================================================================
 
 University of Illinois/NCSA Open Source License
 
