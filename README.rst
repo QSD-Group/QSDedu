@@ -2,6 +2,9 @@
 QSDedu: Education modules for Quantitative Sustainable Design
 =============================================================
 
+.. image:: https://mybinder.org/badge_logo.svg
+   :target: https://mybinder.org/v2/gh/QSD-group/QSDedu/main
+
 
 Status
 ------
@@ -13,6 +16,8 @@ This repository is under continuous development, please refer to the individual 
 What is QSDedu?
 ---------------
 QSDedu contains course modules for quantitative sustainable design (QSD), including the introduction of QSD methodology [1]_ and separate modules on using the packages developed by the `Quantitative Sustainable Design Group <https://github.com/QSD-Group>`_ for QSD of different engineered systems.
+
+All tutorials are written using Jupyter Notebook, you can run your own Jupyter environment, or you can click the ``launch binder`` badge on the top to launch the environment in your browser.
 
 
 Authors and Contributing
