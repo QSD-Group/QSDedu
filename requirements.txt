@@ -1,5 +1,6 @@
 qsdsan
 exposan
+graphviz
 country-converter
 ipywidgets
 jupyterlab-widgets
