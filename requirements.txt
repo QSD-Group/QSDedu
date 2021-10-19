@@ -1,3 +1,6 @@
 qsdsan
 exposan
 country-converter
+ipywidgets
+jupyterlab-widgets
+widgetsnbextension
