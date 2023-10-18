@@ -14,13 +14,3 @@ This module provides compiled resources for **beginners** (pros, you may know di
 
 **Note:**
 Many of the materials provided here are not step-by-step instructions to complete certain tasks, rather, they are the compilation of links to resources. They might not answer all of your questions, in which case search engine and platforms such as `stackoverflow <https://stackoverflow.com/>`_ would be of great help.
-
-Of couse, you can also submit a GitHub issue for this repository and we will try out best to answer your questions.
-
-
-**Sub-modules:**
-	- S1: Getting Started on Python
-	- S2: Version Control and Collaboration
-	- S3: Documentation and Testing
-	- S4: Packaging and Publishing
-	- S5: Other Topics
