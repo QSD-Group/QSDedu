@@ -22,7 +22,7 @@ All tutorials are written using Jupyter Notebook, you can run your own Jupyter e
 
 Authors and Contributing
 ------------------------
-Development of QSDedu is led by Yalin Li (`@yalinli2 <https://github.com/yalinli2>`_; `email <zoe.yalin.li@gmail.com>`_) and Joy Zhang (`@joyxyz1994 <https://github.com/joyxyz1994>`_; `email <joycheung1994@gmail.com>`_) with contributions from the `Quantitative Sustainable Design Group <https://github.com/QSD-Group>`_.
+Development of QSDedu is led by `Yalin Li <https://qsdsan.readthedocs.io/en/latest/CONTRIBUTING.html>`_ with contributions from the `Quantitative Sustainable Design Group <https://github.com/QSD-Group>`_.
 
 We welcome contributions from the community! Please feel free to submit a GitHub issue for your questions and suggestions.
 
@@ -34,4 +34,4 @@ Please refer to the ``LICENSE.txt`` for information on the terms & conditions fo
 
 References
 ----------
-.. [1] Li, Y.; Trimmer, J. T.; Hand, S.; Zhang, X.; Chambers, K. G.; Lohman, H. A. C.; Shi, R.; Byrne, D. M.; Cook, S. M.; Guest, J. S. Quantitative Sustainable Design (QSD): A Methodology for the Prioritization of Research, Development, and Deployment of Technologies. *Critial Review Proposal Submitted*, 2021.
+.. [1] Li, Y.; Trimmer, J.T.; Hand, S.; Zhang, X.; Chambers, K.G.; Lohman, H.A.C.; Shi, R.; Byrne, D.M.; Cook, S.M.; Guest, J.S. Quantitative Sustainable Design (QSD): A Methodology for the Prioritization of Research, Development, and Deployment of Technologies. (Tutorial Review) Environ. Sci.: Water Res. Technol. 2022, 8 (11), 2439–2465. https://doi.org/10.1039/D2EW00431C.
