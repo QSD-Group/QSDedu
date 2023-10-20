@@ -1,4 +1,4 @@
-name: bind-build
+name: build
 on: [push]
 
 jobs:
@@ -10,3 +10,15 @@ jobs:
       with:
         NO_PUSH: true
         MYBINDERORG_TAG: ${{ github.event.ref }} # This builds the container on mybinder.org with the branch that was pushed on.
+
+  Create-MyBinderOrg-Cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: nbmake
+        uses: treebeardtech/nbmake-action@v0.2.1
+        with:
+          path: "./examples"
+          path-output: .
+          notebooks: |
+            nb1.ipynb
+            'sub dir/*.ipynb'
