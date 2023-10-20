@@ -9,11 +9,16 @@ QSDedu: Education modules for Quantitative Sustainable Design
 .. image:: https://github.com/QSD-Group/QSDedu/actions/workflows/build.yml/badge.svg?branch=main
    :target: https://github.com/QSD-Group/QSDsan/actions/workflows/build.yml
 
-Note
-****
-If launching binder through the icon above takes a long time (or it timed out), go to https://mybinder.org, enter the information as below, and click the `launch` button.
+Launching Binder
+----------------
+Directly click the |binder_badge| to launch binder in your browser. If it takes a long time (or it times out), go to https://mybinder.org, enter the information as below, and click the `launch` button.
 
 .. image:: ./images/launch_binder.png
+   :width: 60%
+
+.. |binder_badge| image:: ./images/binder_badge.svg
+   :height: 2ex
+
 
 Status
 ------
