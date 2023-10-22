@@ -7,8 +7,8 @@ QSDedu: Education modules for Quantitative Sustainable Design
    :target: https://github.com/QSD-Group/QSDedu
 
 .. GitHub test of the main branch
-.. image:: https://github.com/QSD-Group/QSDedu/actions/workflows/build.yml/badge.svg?branch=main
-   :target: https://github.com/QSD-Group/QSDedu/actions/workflows/build.yml
+.. image:: https://github.com/QSD-Group/QSDedu/actions/workflows/test-notebook.yml/badge.svg?branch=main
+   :target: https://github.com/QSD-Group/QSDedu/actions/workflows/test-notebook.yml
 
 .. image:: https://mybinder.org/badge_logo.svg
    :target: https://mybinder.org/v2/gh/QSD-Group/QSDsan-env/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FQSD-group%252FQSDedu%26urlpath%3Dtree%252FQSDedu%252F%26branch%3Dmain
