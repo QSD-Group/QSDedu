@@ -2,22 +2,23 @@
 QSDedu: Education modules for Quantitative Sustainable Design
 =============================================================
 
-.. image:: https://mybinder.org/badge_logo.svg
-   :target: https://mybinder.org/v2/gh/QSD-Group/QSDsan-env/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FQSD-group%252FQSDedu%26urlpath%3Dtree%252FQSDedu%252F%26branch%3Dmain
+.. Status
+.. image:: https://img.shields.io/badge/status-under%20development-blue?style=flat
+   :target: https://github.com/QSD-Group/QSDedu
 
 .. GitHub test of the main branch
 .. image:: https://github.com/QSD-Group/QSDedu/actions/workflows/build.yml/badge.svg?branch=main
-   :target: https://github.com/QSD-Group/QSDsan/actions/workflows/build.yml
+   :target: https://github.com/QSD-Group/QSDedu/actions/workflows/build.yml
 
-.. Status
-.. image:: https://img.shields.io/badge/status-under%20development-blue?style=flat
+.. image:: https://mybinder.org/badge_logo.svg
+   :target: https://mybinder.org/v2/gh/QSD-Group/QSDsan-env/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FQSD-group%252FQSDedu%26urlpath%3Dtree%252FQSDedu%252F%26branch%3Dmain
 
 
 Launching Binder
 ----------------
 Method 1
 ********
-Directly click the |_binder_badge| above to launch binder in your browser.
+Directly click the |_binder_badge| **above** (under the main header) to launch binder in your browser.
 
 .. |_binder_badge| image:: https://mybinder.org/badge_logo.svg
 
