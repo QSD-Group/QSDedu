@@ -6,17 +6,22 @@ QSDedu: Education modules for Quantitative Sustainable Design
    :target: https://mybinder.org/v2/gh/QSD-group/QSDedu/main
 
 .. GitHub test of the main branch
-.. image:: https://github.com/QSD-Group/QSDedu/actions/workflows/build.yml/badge.svg?branch=main
-   :target: https://github.com/QSD-Group/QSDsan/actions/workflows/build.yml
+.. image:: https://mybinder.org/badge_logo.svg
+   :target: https://mybinder.org/v2/gh/QSD-Group/QSDsan-env/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FQSD-group%252FQSDedu%26urlpath%3Dtree%252FQSDedu%252F%26branch%3Dmain
 
 Launching Binder
 ----------------
-Directly click the |binder_badge| badge above to launch binder in your browser. If it takes a long time (or it times out), go to https://mybinder.org, enter the information as below, and click the `launch` button.
+Directly click the |_binder_badge| above to launch binder in your browser.
+
+If it takes a long time (or it times out), go to https://mybinder.org, enter the information as below:
+
+   * GitHub: https://github.com/QSD-Group/QSDedu
+   * Git ref: main
+
+and click the `launch` button.
 
 .. image:: ./images/launch_binder.png
    :width: 60%
-
-.. |binder_badge| image:: ./images/binder_badge.svg
 
 
 Status
@@ -48,3 +53,5 @@ Please refer to the ``LICENSE.txt`` for information on the terms & conditions fo
 References
 ----------
 .. [1] Li, Y.; Trimmer, J.T.; Hand, S.; Zhang, X.; Chambers, K.G.; Lohman, H.A.C.; Shi, R.; Byrne, D.M.; Cook, S.M.; Guest, J.S. Quantitative Sustainable Design (QSD): A Methodology for the Prioritization of Research, Development, and Deployment of Technologies. (Tutorial Review) Environ. Sci.: Water Res. Technol. 2022, 8 (11), 2439–2465. https://doi.org/10.1039/D2EW00431C.
+
+.. _binder_badge: https://mybinder.org/badge_logo.svg
