@@ -1,4 +1,4 @@
-name: build
+name: test-notebook
 on: [push]
 
 jobs:
