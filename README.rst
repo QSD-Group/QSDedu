@@ -1,5 +1,5 @@
 =============================================================
-QSDedu: Education modules for Quantitative Sustainable Design
+QSDedu: Education Modules for Quantitative Sustainable Design
 =============================================================
 
 .. Status
