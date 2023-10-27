@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 
 '''
-QSDsan: Quantitative Sustainable Design for sanitation and resource recovery systems
+QSDedu: Education Modules for Quantitative Sustainable Design
 
 This module is developed by:
+
     Yalin Li <mailto.yalin.li@gmail.com>
 
 This module is under the University of Illinois/NCSA Open Source License.
