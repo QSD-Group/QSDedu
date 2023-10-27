@@ -1,0 +1,11 @@
+git+https://github.com/BioSTEAMDevelopmentGroup/thermosteam.git@qsdsan
+git+https://github.com/BioSTEAMDevelopmentGroup/biosteam.git@qsdsan
+git+https://github.com/QSD-group/qsdsan.git@main
+git+https://github.com/QSD-group/exposan.git@main
+dmsan
+# git+https://github.com/QSD-group/dmsan
+
+# For the interactive modules
+ipywidgets
+jupyterlab-widgets
+widgetsnbextension
