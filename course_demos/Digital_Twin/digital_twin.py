@@ -16,6 +16,7 @@ https://www.kaggle.com/code/ryanholbrook/hybrid-models
 '''
 
 import os, pandas as pd
+from matplotlib import pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
@@ -89,7 +90,7 @@ def data_preparation(
     return X_train, X_test, y_train, y_test
 
 # Plot and calculate error (normalized root mean squared error)
-def evaluate(y_train, y_test, y_train_pred, y_test_pred, figsize=(50, 2)):
+def evaluate(y_train, y_test, y_train_pred, y_test_pred, figsize, info):
     rmse_train = mean_squared_error(y_train, y_train_pred, squared=False)
     nrmse_train = (rmse_train/y_train.mean()).values[0]
     rmse_test = mean_squared_error(y_test, y_test_pred, squared=False)
@@ -103,6 +104,8 @@ def evaluate(y_train, y_test, y_train_pred, y_test_pred, figsize=(50, 2)):
     axs = y_train_pred.plot(color='C0', subplots=True, sharex=True, ax=axs)
     axs = y_test_pred.plot(color='C3', subplots=True, sharex=True, ax=axs)
     for ax in axs: ax.legend([])
+    kind, features, target = info
+    plt.suptitle(f'{kind.capitalize()} prediction - features: {features} - target: {target}')
     return nrmse_train, nrmse_test, axs
 
 # Trend prediction only through linear regression
@@ -137,7 +140,8 @@ def single_prediction(
         columns=y_test.columns,
     )
     if kind == 'hybrid': return y_train, y_test, y_train_pred, y_test_pred
-    return evaluate(y_train, y_test, y_train_pred, y_test_pred, figsize=figsize)
+    info = [kind] + features + [target]
+    return evaluate(y_train, y_test, y_train_pred, y_test_pred, figsize, info)
 
 
 # Hybrid approach using both trend and residual predictions
@@ -169,14 +173,17 @@ def hybrid_prediction(
     y_test_pred_resid = y_test_pred_resid.reshape(y_test_pred.shape)
     y_test_pred_boosted = y_test_pred_resid + y_test_pred
 
-    return evaluate(y_train, y_test, y_train_boosted, y_test_pred_boosted, figsize=figsize)
+    info = ['hybrid'] + features + [target]
+    return evaluate(y_train, y_test, y_train_boosted, y_test_pred_boosted, figsize, info)
 
 def predict(
         features=['S_I'],
         target='S_S',
         test_size=0.25,
         ):
-    print(f'\nPrediction {target} using {features}:')
+    text = f'\nPredicting {target} using {features}:'
+    print(text)
+    print(''.join(['-']*(len(text)-1)))
     print('Trend prediction:')
     err = [single_prediction('regression', features, target, test_size)[1]]
     print('\nResidual prediction:')
@@ -188,10 +195,15 @@ def predict(
 
 # %%
 
-target = 'S_S'
-err_dct = {}
-for feature in columns:
-    if feature == target: continue
-    err_dct[feature] = predict(features=[feature], target='S_S')
+# If want to test for all features
+def test_features():
+    target = 'S_S'
+    err_dct = {}
+    for feature in columns:
+        if feature == target: continue
+        err_dct[feature] = predict(features=[feature], target='S_S')
+    df = pd.DataFrame.from_dict(err_dct).T
+    df.columns = ['Trend', 'Residual', 'Hybrid']
+    return df
 
 # errs = predict(features=['S_I', 'Q'], target='S_S')
