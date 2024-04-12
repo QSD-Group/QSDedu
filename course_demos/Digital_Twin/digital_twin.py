@@ -7,21 +7,28 @@ QSDedu: Education Modules for Quantitative Sustainable Design
 This module is developed by:
 
     Yalin Li <mailto.yalin.li@gmail.com>
+    
+Dynamic influent data from the Modelling & Integrated Assessment Specialist Group
+of the International Water Association: http://iwa-mia.org/benchmarking/#BSM2
 
+Forecasting models based on kaggle tutorial:
+https://www.kaggle.com/code/ryanholbrook/hybrid-models
 '''
 
-import os
-import matplotlib.pyplot as plt
-import numpy as np, pandas as pd
+import os, pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
-# from statsmodels.tsa.deterministic import CalendarFourier, DeterministicProcess
 from xgboost import XGBRegressor
+
+# Ignore 
+from warnings import simplefilter
+simplefilter("ignore")
 
 # Set up directory
 folder = os.path.dirname(__file__)
 path = os.path.join(folder, 'dyninfluent_bsm2.csv')
+
 
 # %%
 
@@ -54,6 +61,7 @@ df = pd.read_csv(path, header=None, names=columns)
 
 # Throw out the last five columns (all dummies)
 data = df.iloc[:, :-5].copy()
+columns = columns[:-5]
 
 # Original data was taken at a 15-min interval, resample to a 4-hour for faster simulation
 # data = data[:].iloc[::16, :]
@@ -61,154 +69,129 @@ data = df.iloc[:, :-5].copy()
 
 # %%
 
+# Extract and split data
+def data_preparation(
+        data,
+        features=['T', 'Q'],
+        target='S_I',
+        test_size=0.25,
+        ):
+    # Extract data
+    X = data[features].copy()
+    y = data[[target]].copy()   
+    
+    # Split training and test data
+    idx_train, idx_test = train_test_split(
+        y.index, test_size=test_size, shuffle=False,
+    )
+    X_train, X_test = X.loc[idx_train, :], X.loc[idx_test, :]
+    y_train, y_test = y.loc[idx_train], y.loc[idx_test]
+    return X_train, X_test, y_train, y_test
 
-
-
-# %%
-
-# Plot and calculate error
-def evaluate(y_train, y_test, y_train_pred, y_test_pred, figsize=figsize):
+# Plot and calculate error (normalized root mean squared error)
+def evaluate(y_train, y_test, y_train_pred, y_test_pred, figsize=(50, 2)):
     rmse_train = mean_squared_error(y_train, y_train_pred, squared=False)
+    nrmse_train = (rmse_train/y_train.mean()).values[0]
     rmse_test = mean_squared_error(y_test, y_test_pred, squared=False)
+    nrmse_test = (rmse_test/y_test.mean()).values[0]
+    
+    print(f'Normalized RMSE for training data: {nrmse_train:2f}.')
+    print(f'Normalized RMSE for testing data: {nrmse_test:2f}.')
+    
     axs = y_train.plot(color='0.25', subplots=True, sharex=True, figsize=figsize)
     axs = y_test.plot(color='0.25', subplots=True, sharex=True, ax=axs)
     axs = y_train_pred.plot(color='C0', subplots=True, sharex=True, ax=axs)
     axs = y_test_pred.plot(color='C3', subplots=True, sharex=True, ax=axs)
     for ax in axs: ax.legend([])
-    return rmse_train, rmse_test, axs
+    return nrmse_train, nrmse_test, axs
 
-# Trend prediction only
-def trend_prediction(
+# Trend prediction only through linear regression
+def single_prediction(
+        kind='regression',
         features=['T', 'Q'],
         target='S_I',
         test_size=0.25,
         figsize=(50, 2),
         ):
-    # Create trend features
-    y = data[[target]].copy()
-    dp = DeterministicProcess(
-        index=y.index,  # dates from the training data
-        constant=True,  # the intercept
-        order=2,        # quadratic trend
-        drop=True,      # drop terms to avoid collinearity
-    )
-    X = dp.in_sample()  # features for the training data
+    # Prepare data
+    X_train, X_test, y_train, y_test = data_preparation(data, features, target, test_size)
     
-    X = data[features].copy()
-
-    # Split training and test data
-    idx_train, idx_test = train_test_split(
-        y.index, test_size=test_size, shuffle=False,
-    )
-    X_train, X_test = X.loc[idx_train, :], X.loc[idx_test, :]
-    y_train, y_test = y.loc[idx_train], y.loc[idx_test]
-    
-    # Fit trend model
-    model = LinearRegression(fit_intercept=False)
+    # Fit model
+    if kind == 'regression':
+        # Trend prediction only through linear regression
+        model = LinearRegression(fit_intercept=False)
+    else:
+        # Residual prediction only through XGBoost 
+        model = XGBRegressor()
     model.fit(X_train, y_train)
     
     # Make predictions
-    y_fit = pd.DataFrame(
+    y_train_pred = pd.DataFrame(
         model.predict(X_train),
         index=y_train.index,
         columns=y_train.columns,
     )
-    y_pred = pd.DataFrame(
+    y_test_pred = pd.DataFrame(
         model.predict(X_test),
         index=y_test.index,
         columns=y_test.columns,
     )
-    
-    # Create residuals (the collection of detrended series) from the training set
-    y_resid = y_train - y_fit
-    # Train XGBoost on the residuals
-    xgb = XGBRegressor()
-    xgb.fit(X_train, y_resid)
-    
-    # Add the predicted residuals onto the predicted trends
-    y_fit_resid = xgb.predict(X_train)
-    y_fit_resid = y_fit_resid.reshape(y_fit.shape)
-    y_fit_boosted = y_fit_resid + y_fit
-
-    y_pred_resid = xgb.predict(X_test)
-    y_pred_resid = y_pred_resid.reshape(y_pred.shape)
-    y_pred_boosted = y_pred_resid + y_pred
+    if kind == 'hybrid': return y_train, y_test, y_train_pred, y_test_pred
+    return evaluate(y_train, y_test, y_train_pred, y_test_pred, figsize=figsize)
 
 
-# %%
-
-
-
-# %%
-
+# Hybrid approach using both trend and residual predictions
 def hybrid_prediction(
         features=['T', 'Q'],
         target='S_I',
         test_size=0.25,
-
+        figsize=(50, 2),
         ):
-    # Create trend features
-    y = data[[target]].copy()
-    dp = DeterministicProcess(
-        index=y.index,  # dates from the training data
-        constant=True,  # the intercept
-        order=2,        # quadratic trend
-        drop=True,      # drop terms to avoid collinearity
-    )
-    X = dp.in_sample()  # features for the training data
-    
-    X = data[features].copy()
-
-    # Split training and test data
-    idx_train, idx_test = train_test_split(
-        y.index, test_size=test_size, shuffle=False,
-    )
-    X_train, X_test = X.loc[idx_train, :], X.loc[idx_test, :]
-    y_train, y_test = y.loc[idx_train], y.loc[idx_test]
+    # Prepare data
+    X_train, X_test, y_train, y_test = data_preparation(data, features, target, test_size)
     
     # Fit trend model
-    model = LinearRegression(fit_intercept=False)
-    model.fit(X_train, y_train)
-    
-    # Make predictions
-    y_fit = pd.DataFrame(
-        model.predict(X_train),
-        index=y_train.index,
-        columns=y_train.columns,
-    )
-    y_pred = pd.DataFrame(
-        model.predict(X_test),
-        index=y_test.index,
-        columns=y_test.columns,
-    )
+    y_train, y_test, y_train_pred, y_test_pred = single_prediction(
+        'hybrid', features, target, test_size, figsize)
     
     # Create residuals (the collection of detrended series) from the training set
-    y_resid = y_train - y_fit
+    y_train_resid = y_train - y_train_pred
     # Train XGBoost on the residuals
     xgb = XGBRegressor()
-    xgb.fit(X_train, y_resid)
+    xgb.fit(X_train, y_train_resid)
     
     # Add the predicted residuals onto the predicted trends
-    y_fit_resid = xgb.predict(X_train)
-    y_fit_resid = y_fit_resid.reshape(y_fit.shape)
-    y_fit_boosted = y_fit_resid + y_fit
+    y_train_resid_pred = xgb.predict(X_train)
+    y_train_resid_pred = y_train_resid_pred.reshape(y_train_pred.shape)
+    y_train_boosted = y_train_resid_pred + y_train_pred
 
-    y_pred_resid = xgb.predict(X_test)
-    y_pred_resid = y_pred_resid.reshape(y_pred.shape)
-    y_pred_boosted = y_pred_resid + y_pred
+    y_test_pred_resid = xgb.predict(X_test)
+    y_test_pred_resid = y_test_pred_resid.reshape(y_test_pred.shape)
+    y_test_pred_boosted = y_test_pred_resid + y_test_pred
 
-    return evaluate(y_train, y_test, y_train_pred, y_test_pred, figsize=figsize)
+    return evaluate(y_train, y_test, y_train_boosted, y_test_pred_boosted, figsize=figsize)
+
+def predict(
+        features=['S_I'],
+        target='S_S',
+        test_size=0.25,
+        ):
+    print(f'\nPrediction {target} using {features}:')
+    print('Trend prediction:')
+    err = [single_prediction('regression', features, target, test_size)[1]]
+    print('\nResidual prediction:')
+    err.append(single_prediction('residual', features, target, test_size)[1])
+    print('\nHybrid prediction:')
+    err.append(hybrid_prediction(features, target, test_size)[1])
+    return err
 
 
 # %%
 
-outputs = hybrid_prediction(
-    features=['S_I'],
-    target='S_S',
-    test_size=0.25,
-    )
+target = 'S_S'
+err_dct = {}
+for feature in columns:
+    if feature == target: continue
+    err_dct[feature] = predict(features=[feature], target='S_S')
 
-
-# for column in columns[:-5]:
-#     hybrid_prediction(
-#         target=column, test_size=0.25)
+# errs = predict(features=['S_I', 'Q'], target='S_S')
