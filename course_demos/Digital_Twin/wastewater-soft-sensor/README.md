@@ -25,23 +25,23 @@ Three datasets are available in CSV format.
 
 **plant_data.csv: wastewater treatment plant data**
 | Parameter | Description | Data Type |
-| --- | --- | --- | Boolean |
-| `DT` | Data and time | 
-| `TI1` | Temperature of water inlet to rector 1, in Kelvin | Float |
-| `T1` | Temperature in reactor 1, in Kelvin | Float |
-| `WF` | Flow of water, in kg/h | Float |
-| `TI2` | Temperature of water inlet to rector 2, in Kelvin | Float |
-| `TO` | Temperature of water outlet, in Kelvin | Float |
-| `S` | Concentration of sulfur compounds predicted by the old soft sensor, in ppm | Float |
+| --- | --- | --- |
+| `DT` | Date and time | datetime |
+| `TI1` | Temperature of water inlet to rector 1, in Kelvin | float |
+| `T1` | Temperature in reactor 1, in Kelvin | float |
+| `WF` | Flow of water, in kg/h | float |
+| `TI2` | Temperature of water inlet to rector 2, in Kelvin | float |
+| `TO` | Temperature of water outlet, in Kelvin | float |
+| `S` | Concentration of sulfur compounds predicted by the old soft sensor, in ppm | float |
 
 **lab_data.csv: data from the analytical laboratory**
 
 *This is the "real" concentration of the sulfur compounds.*
 
 | Parameter | Description | Data Type |
-| --- | --- | --- | Boolean |
-| `DT` | Data and time | 
-| `LS` | Concentration of sulfur compounds analytically determined, in ppm | Float |
+| --- | --- | --- |
+| `DT` | Date and time | datetime |
+| `LS` | Concentration of sulfur compounds analytically determined, in ppm | float |
 
 
 ## Evaluation
@@ -51,7 +51,7 @@ The accuracy of your results will be evaluated using Root Mean Squared Error (RM
 RMSE = \sqrt{MSE} = \sqrt{\frac{1}{n}*\sum_{i=1}^n*(y_i-\hat{y_i})^2}
 ```
 
-### Prompting Questions
+## Prompting Questions
 * How does your model compare with the old soft sensor?
 * In addition to RMSE, are there other criteria that can be used to evaluate the accuracy of the model?
 * When developing a model, are there considerations in addition to accuracy?
