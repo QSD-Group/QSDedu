@@ -18,12 +18,12 @@ The influent goes through the preliminary treatment (including screening and gri
 ![Treatment train layout](layout.png)
 
 ### Volumes and Flows
-Volume of the anoxic tank: 10920 [m3]
-Volume of the facultative tank: 10100 [m3]
-Volume of each of the three aertion tanks: 11179 [m3]
-Average internal recycle from aerobic to anoxic zone (nitrate recycle): 9800 [m3/h]
-Average return activated sludge: 1600 [m3/h]
-Average wastage flow: 30.5 [m3/h]
+- Volume of the anoxic tank: 10920 [m3]
+- Volume of the facultative tank: 10100 [m3]
+- Volume of each of the three aertion tanks: 11179 [m3]
+- Average internal recycle from aerobic to anoxic zone (nitrate recycle): 9800 [m3/h]
+- Average return activated sludge: 1600 [m3/h]
+- Average wastage flow: 30.5 [m3/h]
 
 ### Dataset
 Online sensor measurements for:
