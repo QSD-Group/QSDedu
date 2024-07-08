@@ -27,6 +27,7 @@ Average wastage flow: 30.5 [m3/h]
 
 ### Dataset
 Online sensor measurements for:
+
 **INPUT**
 - Q_inf: total influent flow rate coming to the plant [m3/h]
 - Q_air_1: Air flow rate supplied to the aerobic selector tank [m3/h]
@@ -35,6 +36,7 @@ Online sensor measurements for:
 - Q_air_4: Air flow rate supplied to the second aerobic tank [m3/h]
 - Q_air_5: Air flow rate supplied to the third aerobic tank [m3/h]
 - Temp: Temperature at the end of the aerobic zone [degC]
+- 
 **OUTPUT**
 - DO_1: Dissolved oxygen concentration in the first aerobic tank [mg/L]
 - DO_2: Dissolved oxygen concentration in the second aerobic tank [mg/L]
@@ -50,7 +52,7 @@ The accuracy of your results will be evaluated using Root Mean Squared Error (RM
 RMSE = \sqrt{MSE} = \sqrt{\frac{1}{n}*\sum_{i=1}^n*(y_i-\hat{y_i})^2}
 ```
 
-### Prompting Questions
+## Prompting Questions
 * How do the different types of model compare with each other?
 * In addition to RMSE, are there other criteria that can be used to evaluate the accuracy of the model?
 * When developing a model, are there considerations in addition to accuracy?
