@@ -2,7 +2,7 @@
 
 ## Background
 
-### How Wastewater Treatment Plant Works?
+### How Do Wastewater Treatment Plant Work?
 
 Wastewater treatment plants (WWTPs), also known as water resources recovery facilities (WRRFs), are integral components of urban water management. WWTPs use a combination of biological, chemical, and physical processes to remove contaminants from the wastewater so that it can be safely discharged into the environment.
 
