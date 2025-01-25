@@ -27,9 +27,9 @@ Modeling these facilities' biological, chemical, and physical processes is valua
 ## Data Description
 
 ### General description of the WWTP
-Tilburg WWTP is located in the south of :netherlands: The Netherlands and is the second largest wastewater treatment plant of Waterschap De Dommel.
+Tilburg WWTP is located in the south of The Netherlands :netherlands: and is the second largest wastewater treatment plant of Waterschap De Dommel.
 
-The plant has a design capacity of 350000 population-equivalent (P.E.). It has both water and sludge treatment lines. The water line includes primary sedimentation tanks, biological treatment, chemical phosphorus removal, and secondary sedimentation tanks.
+The plant has a design capacity of 350000 population-equivalent. It has both water and sludge treatment lines. The water line includes primary sedimentation tanks, biological treatment, chemical phosphorus removal, and secondary sedimentation tanks.
 
 It is also considered as an "energy factory" by generating biogas from anaerobic digestion. The biogas is converted to energy through a combined heat and power (CHP) generation system.
 
@@ -47,7 +47,7 @@ The internal recycle flows from the last aerobic tank to the anoxic tank, and th
 
 :bulb: Different microbial communities remove different contaminants from wastewater. Some microbes like oxygen (**aerobic**), some do not (**anaerobic** or **anoxic**), and some can survive with and without oxygen (**facultative**). Controlling the dissolved oxygen (DO) level is a very important operating strategy to control what microbes are in which tank.
 
-:bulb: Both **anaerobic** and **anoxic** tanks have a DO of zero. But anoxic tanks have oxygen-containing chemicals (e.g., nitrate NO3) while anaerobic tanks do not.
+:bulb: Both **anaerobic** and **anoxic** tanks have a DO of zero. But anoxic tanks have oxygen-containing chemicals (e.g., nitrate, NO3) while anaerobic tanks do not.
 
 ![Treatment train layout](layout.png)
 
@@ -55,9 +55,8 @@ The internal recycle flows from the last aerobic tank to the anoxic tank, and th
 ### Project Goal
 :page_facing_up: For this project, you are tasked to develop data-driven models that use data from online sensors to predict the desired effluent properties.
 
-Through online sensors, we have measurement for the following parameters:
+Through online sensors, we have measurement for the following parameters (i.e., your model inputs):
 
-**INPUT**
 - Q_inf: total influent flow rate coming to the plant [m3/h]
 - Q_air_1: Air flow rate supplied to the aerobic selector tank [m3/h]
 - Q_air_2: Air flow rate supplied to the facultative tank [m3/h]
@@ -67,7 +66,7 @@ Through online sensors, we have measurement for the following parameters:
 - Temp: Temperature at the end of the aerobic zone [degC]
 
 
-We would like to know the value of the follow parameters, where local regulations require the WWTP to reduce NH4 and NO3 to a certain level, and the wastewater engineers can use DOs to diagnose the performance of different microbial communities.
+We would like to know the value of the follow parameters (i.e., your model outputs):
 
 **OUTPUT**
 - DO_1: Dissolved oxygen concentration in the first aerobic tank [mg/L]
@@ -75,6 +74,12 @@ We would like to know the value of the follow parameters, where local regulation
 - DO_3: Dissolved oxygen concentration in the third aerobic tank [mg/L]
 - NO3: Nitrate concentration at the end of the aerobic zone [mg/L]
 - NH4: Ammonium concentration at the end of the aerobic zone [mg/L]
+
+:thought_balloon: Why do we care about these parameters?
+
+:bulb: WWTPs are required by regulations to reduce NH4 and NO3 to certain levels.
+
+:bulb: Wastewater engineers can use DOs to diagnose the performance of different microbial communities. We want DOs to be just sufficient to support the microbes we want, because to increase DO, we need to pump air into the wastewater, and this uses a LOT of energy (aeration is the most energy-consuming process of wastewater treatment).
 
 
 ## Evaluation
@@ -94,5 +99,3 @@ RMSE = \sqrt{MSE} = \sqrt{\frac{1}{n}*\sum_{i=1}^n*(y_i-\hat{y_i})^2}
 
 ## Citation
 This module was developed by [Prof. Yalin Li](https://yalinli.group) based on the [WWTP model: mechanistic, data-driven, or hybrid?](https://www.kaggle.com/competitions/dynamic-modeling-of-wastewater-treatment-process/) Kaggle competition.
-
-Ali Reza Dehghani Tafti, andrefro, Cristian Gómez, Elena Torfs, Junjie Zhu, Marcello Serrao, Mariane Schneider, Saba, sina borzooei, xu zou. (2023). WWTP model: mechanistic, data-driven, or hybrid?. Kaggle. https://kaggle.com/competitions/dynamic-modeling-of-wastewater-treatment-process
