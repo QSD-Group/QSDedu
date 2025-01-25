@@ -68,7 +68,6 @@ Through online sensors, we have measurement for the following parameters (i.e., 
 
 We would like to know the value of the follow parameters (i.e., your model outputs):
 
-**OUTPUT**
 - DO_1: Dissolved oxygen concentration in the first aerobic tank [mg/L]
 - DO_2: Dissolved oxygen concentration in the second aerobic tank [mg/L]
 - DO_3: Dissolved oxygen concentration in the third aerobic tank [mg/L]
