@@ -41,6 +41,8 @@ QSDedu contains course modules for quantitative sustainable design (QSD), includ
 
 All tutorials are written using Jupyter Notebook, you can run your own Jupyter environment, or you can click the ``launch binder`` badge on the top to launch the environment in your browser.
 
+Looking for the QSDsan workshop materials? They have moved to the `QSDsan-workshop <https://github.com/QSD-Group/QSDsan-workshop>`_ repository, which hosts one folder per workshop edition.
+
 
 Authors and Contributing
 ------------------------
