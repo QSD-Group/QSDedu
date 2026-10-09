@@ -91,9 +91,9 @@ def data_preparation(
 
 # Plot and calculate error (normalized root mean squared error)
 def evaluate(y_train, y_test, y_train_pred, y_test_pred, figsize, info):
-    rmse_train = mean_squared_error(y_train, y_train_pred, squared=False)
+    rmse_train = mean_squared_error(y_train, y_train_pred) ** 0.5
     nrmse_train = (rmse_train/y_train.mean()).values[0]
-    rmse_test = mean_squared_error(y_test, y_test_pred, squared=False)
+    rmse_test = mean_squared_error(y_test, y_test_pred) ** 0.5
     nrmse_test = (rmse_test/y_test.mean()).values[0]
     
     print(f'Normalized RMSE for training data: {nrmse_train:2f}.')

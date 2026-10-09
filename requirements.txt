@@ -1,9 +1,7 @@
 # For QSDsan
-qsdsan==1.4.3
-exposan==1.4.3
-country-converter
-fdasrsf
-scikit-fda
+qsdsan==1.5.3
+exposan==1.5.3
+country-converter # used by legacy_files
 
 # To pull the repo
 nbgitpuller
@@ -18,4 +16,5 @@ jupyterlab-widgets
 widgetsnbextension
 
 # Machine learning
+scikit-learn
 xgboost
