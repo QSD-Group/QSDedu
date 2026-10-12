@@ -7,7 +7,11 @@ QSDedu: Education Modules for Quantitative Sustainable Design
 This module is developed by:
 
     Yalin Li <mailto.yalin.li@gmail.com>
-    
+
+This module is under the BSD 3-Clause License.
+Please refer to https://github.com/QSD-Group/QSDedu/blob/main/LICENSE.txt
+for license details.
+
 Dynamic influent data from the Modelling & Integrated Assessment Specialist Group
 of the International Water Association: http://iwa-mia.org/benchmarking/#BSM2
 

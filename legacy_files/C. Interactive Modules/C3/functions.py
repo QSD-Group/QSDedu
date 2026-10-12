@@ -4,6 +4,10 @@
 Created on Sat Oct 16 09:03:07 2021
 
 @author: Yalin Li
+
+This module is under the BSD 3-Clause License.
+Please refer to https://github.com/QSD-Group/QSDedu/blob/main/LICENSE.txt
+for license details.
 """
 
 
